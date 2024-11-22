@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-5)l*e3$y*7*tw318&ix1ckvfx__rnhzr9*7)j1j*z^dg7cvd)a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '.vercel.app'
+]
 
 
 # Application definition
@@ -37,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
+    'corsheaders',
+
+    'rest_framework.authtoken',
+    'rest_framework',
     'attendance',
 ]
 
@@ -48,7 +56,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'attendance.middlewares.JSONResponseMiddleware'
 ]
+
+
 
 ROOT_URLCONF = 'A2.urls'
 
@@ -74,12 +86,24 @@ WSGI_APPLICATION = 'A2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'ra6y5XEfehwo',
+        'HOST': 'ep-bold-dawn-a4sde9f2.us-east-1.aws.neon.tech',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -122,3 +146,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ALL_ORIGINS = True
+CORS_ALLOWED_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:3005']
+CORS_ALLOWED_ORIGIN_REGEXS = [
+    'http://localhost:3005',
+]
