@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
+    '127.0.0.1',
     '.vercel.app'
 ]
 
@@ -80,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'A2.wsgi.application'
+WSGI_APPLICATION = 'A2.wsgi.app'
 
 
 # Database
@@ -153,4 +154,5 @@ CORS_ALLOWED_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = ['http://localhost:3005']
 CORS_ALLOWED_ORIGIN_REGEXS = [
     'http://localhost:3005',
+    'https://a2-frontend-mu.vercel.app/'
 ]
