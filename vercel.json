@@ -2,7 +2,7 @@
   "framework": null,
   "builds": [
     {
-      "src": "WebDevelopmentAssignment_2_backend/wsgi.py",
+      "src": "A2/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize":  "15mb", "runtime":  "python3.12" }
     }
@@ -10,7 +10,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "WebDevelopmentAssignment_2_backend/wsgi.py",
+      "dest": "A2/wsgi.py",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS, DELETE, PUT"
@@ -18,7 +18,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "WebDevelopmentAssignment_2_backend/wsgi.py"
+      "dest": "A2/wsgi.py"
     }
   ]
 }
